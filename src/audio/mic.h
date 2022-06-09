@@ -3,6 +3,9 @@
 
 #include <string>
 #include <vector>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
 #include <AL/al.h>
 
@@ -25,13 +28,20 @@ class Mic
 
  private:
   static void CheckForError();
-  void captureLoop();
+  void CaptureLoop();
 
+  std::thread capture_thread_;
+  std::condition_variable cv_;
+  std::mutex mx_;
+  std::atomic_bool done_ = false;
+  std::atomic_bool started_ = false;
   static constexpr int RATE = 44100;
   static constexpr int BUFSIZE = 3072;
+
   audio::Device &device_;
-  net::Client &socket_;
   audio::Speaker speaker_;
+  net::Client &socket_;
+
   ALCdevice *capture_device_ = nullptr;
   ALbyte *buffer_ = nullptr;
 };
