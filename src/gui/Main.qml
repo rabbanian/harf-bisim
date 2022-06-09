@@ -13,9 +13,11 @@ Window {
 
     signal captureStartSignal()
     signal captureStopSignal()
-    signal connectClickSignal(String host, String port)
+    signal connectClickSignal(string host, string port)
 
-
+    function onHostConnected() {
+        stackView.push("pages/SecondPage.qml");
+    }
 
     StackView {
         id: stackView

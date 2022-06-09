@@ -11,6 +11,8 @@ Pane {
 
         Button {
             text: "Push to talk"
+            onPressed: root.captureStartSignal()
+            onReleased: root.captureStopSignal()
         }
     }
 }

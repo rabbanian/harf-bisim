@@ -31,7 +31,7 @@ Pane {
                 this.text = "";
                 this.enabled = false;
                 this.load.visible = true;
-                this.root.connectSignal(hostIP.text, hostPort.text);
+                root.connectClickSignal(hostIP.text, hostPort.text);
             }
 
             BusyIndicator {

@@ -52,17 +52,17 @@ int main(int argc, char *argv[])
       },
       Qt::QueuedConnection);
 
-  QQmlComponent component(&engine, url);
-  QObject *item = component.create();
+  engine.load(url);
+
+  QObject *item = engine.rootObjects()[0];
   QObject::connect(item, SIGNAL(connectClickSignal(QString, QString)), &backend,
                    SLOT(OnConnectClicked(QString, QString)));
   QObject::connect(item, SIGNAL(captureStartSignal()), &backend,
                    SLOT(OnCaptureStart()));
   QObject::connect(item, SIGNAL(captureStopSignal()), &backend,
                    SLOT(OnCaptureStop()));
-  QObject::connect(&backend, SIGNAL(ConnectedToHost()), item, SLOT());
-
-  //  engine.load(url);
+  QObject::connect(&backend, SIGNAL(ConnectedToHost()), item,
+                   SLOT(onHostConnected()));
 
   return app.exec();
 }
