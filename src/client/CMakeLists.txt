@@ -14,5 +14,6 @@ set(LIBS
 	net
 	)
 
-add_executable(${PROJECT_NAME}_client "${SRC};${INC}")
-target_link_libraries(${PROJECT_NAME}_client "${LIBS}")
+add_executable(${PROJECT_NAME}-client "${SRC};${INC}")
+target_link_libraries(${PROJECT_NAME}-client "${LIBS}")
+install(TARGETS ${PROJECT_NAME}-client)

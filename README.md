@@ -15,7 +15,7 @@ $ make
 
 ### Build Options
 
-Harf-bisim has two target `harf-bisim_client` and `harf-bisim_server`,
+Harf-bisim has two target `harf-bisim-client` and `harf-bisim-server`,
 which are enabled and compiled by default. Use these options to disable them:
 
 - WITH_CLIENT

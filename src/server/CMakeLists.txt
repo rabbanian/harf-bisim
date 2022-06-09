@@ -10,5 +10,6 @@ set(LIBS
 	net
 	)
 
-add_executable(${PROJECT_NAME}_server "${SRC};${INC}")
-target_link_libraries(${PROJECT_NAME}_server "${LIBS}")
+add_executable(${PROJECT_NAME}-server "${SRC};${INC}")
+target_link_libraries(${PROJECT_NAME}-server "${LIBS}")
+install(TARGETS ${PROJECT_NAME}-server)
