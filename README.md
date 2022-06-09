@@ -1,24 +1,28 @@
 # Harf-bisim
 
-## Build Instructions
+Harf-bisim tries to implement a low-latency voice chat. with the help of Asio and OpenAL Soft.
 
-- First clone the submodules
-``` bash
-$ git submoduele init
-$ git submoduele update
-```
+## Build
 
-- Create a build directory (in source builds are prevented)
-``` bash
+- Harf-bisim uses CMake, if you're on Linux these commands should get you started:
+ 
+```bash
+$ git clone --recursive 'https://github.com/rabbanian/harf-bisim'
 $ mkdir build
-```
-
-- Generate build scripts with CMake
-``` bash
-$ cmake ..
-```
-
-- Build it (if you are in linux)
-``` bash
+$ cmake -DCMAKE_BUILD_TYPE=Release ..
 $ make
+```
+
+### Build Options
+
+Harf-bisim has two target `harf-bisim_client` and `harf-bisim_server`,
+which are enabled and compiled by default. Use these options to disable them:
+
+- WITH_CLIENT
+- WITH_SERVER
+
+e.g.:
+
+```bash
+$ cmake -DWITH_SERVER=OFF ..
 ```
